@@ -62,7 +62,16 @@
     })
 
     spacing.addEventListener('mousemove', function () {
-      image.style.padding = spacing.value + "px";
+      image.style.padding = blur(spacing.value + "px");
+    })
+
+    var blurSpacing = document.getElementById('blur');
+    blurSpacing.addEventListener('change', function () {
+      image.style.filter = "blur(" + blurSpacing.value + "px)";
+    })
+
+    blurSpacing.addEventListener('mousemove', function () {
+      image.style.filter = "blur(" + blurSpacing.value + "px)";
     })
 
     var base = document.querySelector('#base')
@@ -73,6 +82,8 @@
       background.style.backgroundColor = base.value;
       h1.style.color = base.value;
       })
+
+    
   </script>
 
 </body>
