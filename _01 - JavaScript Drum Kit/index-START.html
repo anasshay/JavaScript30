@@ -57,7 +57,40 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
+
 <script>
+
+  var list = {
+    97 : '65',
+    115 : '83',
+    100 : '68',
+    102 : '70',
+    103 : '71',
+    104 : '72',
+    106 : '74',
+    107 : '75',
+    108 : '76',
+  }
+
+  const arrAudio = Array.from(document.querySelectorAll('audio'));
+  const keys = Array.from(document.querySelectorAll('.key')); 
+
+  document.addEventListener ('keypress', function(keypress){
+    var code = list[keypress.keyCode];
+
+    // console.log(code)
+    var audioFile = arrAudio.filter(item => item.dataset.key == code);
+    var wAudio = new Audio(audioFile[0].getAttribute('src'));
+        wAudio.play();
+
+
+    var keybtn = keys.filter(item => item.dataset.key == code);
+    keybtn[0].classList.add('playing');
+    setTimeout(function(){
+      keybtn[0].classList.remove('playing');
+    }, 200);
+    
+  })
 
 </script>
 
